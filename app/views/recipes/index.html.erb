@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Recipes</h1>
+<style>
+  .grid-container {
+    display: grid;
+    grid-column-gap: 50px;
+    grid-template-columns: auto auto auto;
+    background-color: #2196F3;
+    padding: 10px;
+  }
+  .grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+</style>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Ingredients</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <div class="grid-container">
+    <div class="grid-item">Name</div>
+    <div class="grid-item">Price</div>
+    <div class="grid-item">Ingredient</div>
+
+  </div>
+    <% @recipes.each do |recipe| %>
+    <div class="grid-container">
+      <div class="grid-item"> <%= recipe.name %> </div>
+      <div class="grid-item"> <%= recipe.price %></div>
+      <div class="grid-item"> <% @recipehasingredients.each do |rhi| %>
+          <% if rhi.recipe_id == recipe.id %>
+            <%= rhi.ingredient.name %> <% end %>
+        <% end %></div>
+    </div>
+
+    <% end %>
+
+</table>
+
+<br>
+
+<%= link_to 'New Recipe', new_recipe_path %>

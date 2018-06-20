@@ -1,0 +1,27 @@
+<%= form_with(model: orderhaspizza, local: true) do |form| %>
+  <% if orderhaspizza.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(orderhaspizza.errors.count, "error") %> prohibited this orderhaspizza from being saved:</h2>
+
+      <ul>
+      <% orderhaspizza.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :order_id %>
+    <%= form.text_field :order_id, id: :orderhaspizza_order_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pizzas_id %>
+    <%= form.text_field :pizzas_id, id: :orderhaspizza_pizzas_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
